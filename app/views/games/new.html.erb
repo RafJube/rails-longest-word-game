@@ -1,0 +1,14 @@
+<h1>New Game</h1>
+<div id="letters">
+<% @letters.each do |letter| %>
+  <div id="letter"><%= letter.upcase %></div>
+<% end %>
+</div>
+<br>
+<h2>Your answer:</h2>
+<form action="/score" method="POST">
+  <input type="text" name="answer" class="text-answer">
+  <input type="submit" value="Validate" class="btn-validate">
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+  <%= hidden_field_tag :letters, @letters %>
+</form>
